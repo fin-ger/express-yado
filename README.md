@@ -11,7 +11,7 @@ The backend accepts JSON post request under `/api/`. The following json format i
   "name": "string",
   "description": "string",
   "type": "door|text",
-  "data": data,
+  "data": {},
   "ticket": "string [auth-ticket]"
 }
 ```
