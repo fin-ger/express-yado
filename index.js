@@ -17,6 +17,7 @@ const doorData = [
 ];
 
 const cards = new Map();
+const times = new Map();
 
 app.use(bodyParser.json());
 app.post('/api/', (req, res) => {
@@ -46,6 +47,7 @@ app.post('/api/', (req, res) => {
             data: req.body.data,
         };
         cards.set(req.body.name, card);
+        times.set(req.body.name, new Date());
 
         io.emit('card change', card);
         res.json({
@@ -58,6 +60,26 @@ io.on('connection', (s) => {
         s.emit('card change', card);
     });
 });
+
+const interval = setInterval(() => {
+    console.log('Checking for old cards...');
+
+    const rms = []
+    times.forEach((time, name) => {
+        const current = new Date();
+
+        // remove after 60 minutes
+        if ((current - time) > 60 * 60 * 1000) {
+            rms.push(name);
+        }
+    });
+    rms.forEach((name) => {
+        console.log('Removing card', name);
+        cards.delete(name);
+        times.delete(name);
+        io.emit('card remove', name);
+    });
+}, 5 * 60 * 1000); // every 5 minutes
 
 server.listen(port, () => {
     console.log('Server listening on port %d', port);

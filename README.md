@@ -22,3 +22,17 @@ The data object is specific for a type.
 |------|------------------------|
 | door | `"open"` or `"closed"` |
 | text | `string`               |
+
+A card is considered as dead when it does not send a message for 60 minutes. You must send a message containing the current state at least every 60 minutes!
+
+## Example usage with `curl`
+
+Type `text`:
+```
+$ curl -H "Content-Type: application/json" -X POST -d '{"name":"Status","type":"text","description":"Raumstatus", "data":"Zurzeit belegt", "ticket":"YnbHT57VAc7HHCmY16mo1DyHUNdbpG1p"}' https://myserver/api/
+```
+
+Type `door`:
+```
+$ curl -H "Content-Type: application/json" -X POST -d '{"name":"Türstatus","type":"door","description":"Türstatus von Raum 42", "data":"open", "ticket":"YnbHT57VAc7HHCmY16mo1DyHUNdbpG1p"}' https://myserver/api/
+```
