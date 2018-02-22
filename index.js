@@ -19,6 +19,8 @@ const doorData = [
 const cards = new Map();
 const times = new Map();
 
+app.use('/', express.static('node_modules/yado/build'));
+
 app.use(bodyParser.json());
 app.post('/api/', (req, res) => {
     if (!req.body.ticket ||

@@ -36,3 +36,9 @@ Type `door`:
 ```
 $ curl -H "Content-Type: application/json" -X POST -d '{"name":"Türstatus","type":"door","description":"Türstatus von Raum 42", "data":"open", "ticket":"YnbHT57VAc7HHCmY16mo1DyHUNdbpG1p"}' https://myserver/api/
 ```
+
+## Dockerfile environment variables
+
+`TICKET` sets the ticket for any card backends. It is used as a static authentication token.
+
+`PORT` sets the port the server runs on.

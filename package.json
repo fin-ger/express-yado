@@ -1,6 +1,6 @@
 {
   "name": "express-yado",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This project makes unicorns laugh",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "express": "^4.16.2",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "yado": "^0.1.2"
   }
 }
