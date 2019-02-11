@@ -19,6 +19,12 @@ const doorData = [
 const cards = new Map();
 const times = new Map();
 
+app.get('/api/', (req, res) => {
+    let cardObjects = [...cards].map(x => x[1]);
+    let result = {};
+	for (let i in cardObjects) result[cardObjects[i].name] = cardObjects[i];
+    res.json(result);
+});
 app.use('/', express.static('node_modules/yado/build'));
 
 app.use(bodyParser.json());
