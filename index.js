@@ -23,7 +23,7 @@ app.get('/api/', (req, res) => {
     let cardObjects = [...cards].map(x => x[1]);
     let result = {};
 	for (let i in cardObjects) result[cardObjects[i].name] = cardObjects[i];
-    res.type("application/json").send(JSON.stringify(result));
+    res.json(result);
 });
 app.use('/', express.static('node_modules/yado/build'));
 
