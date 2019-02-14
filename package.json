@@ -1,6 +1,6 @@
 {
   "name": "express-yado",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "This project makes unicorns laugh",
   "main": "index.js",
   "scripts": {
